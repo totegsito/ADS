@@ -1,7 +1,7 @@
 package Modelo;
 
 import Modelo.MDocumento.Documento;
-import Modelo.MFiltros.Filtro;
+import Modelo.MFiltros.MFiltro;
 
 import java.util.ArrayList;
 
@@ -10,18 +10,18 @@ import java.util.ArrayList;
  */
 public class MBusqueda{
     private Documento doc;
-    private ArrayList<Filtro> filtros;
+    private ArrayList<MFiltro> MFiltros;
 
     public MBusqueda(){
-        this.filtros = new ArrayList<Filtro>();
+        this.MFiltros = new ArrayList<MFiltro>();
     }
 
-    public void addFiltro(Filtro filtro){
-        this.filtros.add(filtro);
+    public void addFiltro(MFiltro MFiltro){
+        this.MFiltros.add(MFiltro);
     }
 
-    public ArrayList<Filtro> getFiltros(){
-        return this.filtros;
+    public ArrayList<MFiltro> getMFiltros(){
+        return this.MFiltros;
     }
 
 

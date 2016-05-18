@@ -1,5 +1,6 @@
 import Controlador.CBusqueda;
 import Modelo.MBusqueda;
+import Vistas.Filtros;
 import Vistas.VBusqueda;
 
 /**
@@ -10,7 +11,6 @@ public class Application {
     private VBusqueda vista;
     private MBusqueda modelo;
     private CBusqueda controlador;
-    private Filtros filtros;
 
     private static Application instance;
 
@@ -20,14 +20,14 @@ public class Application {
         this.controlador = new CBusqueda(modelo, vista);
     }
 
-    public static Application getInstance(){
+    static Application getInstance(){
         if(instance == null){
             instance = new Application();
         }
         return instance;
     }
 
-    public void run(){
+    void run(){
         controlador.start();
     }
 

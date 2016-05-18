@@ -3,12 +3,12 @@ package Modelo.MFiltros;
 /**
  * Created by Frank on 04/04/2016.
  */
-public abstract class Filtro {
+public abstract class MFiltro {
     protected String contenido;
     protected String palabra;
     private boolean caseSensitive;
 
-    public Filtro(String contenido, String palabra) {
+    public MFiltro(String contenido, String palabra) {
         this.contenido = contenido;
         this.palabra = palabra;
     }

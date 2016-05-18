@@ -1,18 +1,23 @@
 package Vistas;
 
+import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 
 public class VBusqueda  extends JFrame {
+
+    private java.util.List<VPicker> vPickerList;
+    private static Map<String, Integer> init = Filtros.filtros;
     private JTextField vRuta;
     private JPanel p1, p2, p3, p4;
 
     private JCheckBox cb1, cb2, cb3, cb4, cb5;
     private JTextField[] ta;
-    private JButton buscar;
+    public JButton buscar;
 
 
     public VBusqueda(){
+        vPickerList = new ArrayList<>();
         vRuta = new JTextField();
         buscar = new JButton("Buscar");
         ta = new JTextField[5];
@@ -21,34 +26,18 @@ public class VBusqueda  extends JFrame {
         p1.add(vRuta, BorderLayout.CENTER);
         p1.add(buscar, BorderLayout.EAST);
         add(p1, BorderLayout.NORTH);
+/*
 
         p4 = new JPanel(new GridLayout(1,2));
-
-
-        cb1 = new JCheckBox("Existe");
-        cb2 = new JCheckBox("Numero de ocurrencias");
-        cb3 = new JCheckBox("Enlaces");
-        cb4 = new JCheckBox("Etiqueta");
-        cb5 = new JCheckBox("Posicion");
-
-        p2 = new JPanel(new GridLayout(5,1) );
-        p2.add(cb1);
-        p2.add(cb2);
-        p2.add(cb3);
-        p2.add(cb4);
-        p2.add(cb5);
-        p4.add(p2);
-
-
-        p3 = new JPanel(new GridLayout(5,1));
-        for (JTextField jTextField : ta){
-            jTextField = new JTextField(20);
-            p3.add(jTextField);
+*/
+        p2 = new JPanel(new GridLayout(init.size(),1) );
+        for (Map.Entry<String, Integer> filtro : init.entrySet()) {
+            VPicker aux = new VPicker(filtro.getKey(), filtro.getValue());
+            vPickerList.add(aux);
+            p2.add(aux.build());
         }
 
-        p4.add(p3);
-
-        add(p4);
+        add(p2, BorderLayout.CENTER);
         System.out.println("Estoy dentro de la ventana");
     }
 

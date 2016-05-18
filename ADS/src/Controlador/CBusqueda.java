@@ -4,11 +4,13 @@ import Modelo.MBusqueda;
 import Vistas.VBusqueda;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Frank on 27/04/2016.
  */
-public class CBusqueda {
+public class CBusqueda implements ActionListener{
 
 
     private MBusqueda modelo;
@@ -26,5 +28,15 @@ public class CBusqueda {
         vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(vista.buscar == e.getSource()){
+            if(!vista.getURL().equals("")){
+
+            }
+
+        }
     }
 }

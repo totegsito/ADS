@@ -1,10 +1,12 @@
+package Vistas;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class Filtros {
 
-    private static final HashMap<String, Integer> filtros;
+    public static final Map<String, Integer> filtros = new HashMap<String, Integer>();
     static {
-        filtros = new HashMap<String, Integer>();
         filtros.put("Existe", 1);
         filtros.put("Numero de Ocurrencias", 1);
         filtros.put("Enlaces", 1);

@@ -1,6 +1,6 @@
 package Modelo.MFiltros;
 
-public class NumeroOcurrencias extends Filtro {
+public class NumeroOcurrencias extends MFiltro {
 
     public NumeroOcurrencias(String contenido, String palabra) {
         super(contenido, palabra);

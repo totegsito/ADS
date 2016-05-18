@@ -1,23 +1,19 @@
-/*package com.company.Filtro;
+package Modelo.MFiltros;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-*//**
- * Created by Frank on 07/03/2016.
- *//*
-public class Enlaces extends Filtro{
+/**
+ * Created by lorena on 18/05/2016.
+ */
+public class Enlaces extends MFiltro {
 
-
-    public Enlaces(String parametro) {
-        super(parametro);
-    }
-
+    public Enlaces (String contenido, String palabra) { super(contenido, palabra); }
 
     @Override
-    public String buscar(String contenido) {
+    public String buscar() {
         Document doc = Jsoup.parse(contenido);
         Elements media = doc.select("[src]");
         Elements links = doc.select("a[href]");
@@ -35,7 +31,7 @@ public class Enlaces extends Filtro{
             //resul += link.attr("abs:href" + "\n");
             String enlace = link.attr("abs:href");
             if(!enlace.equals(""))
-            resul += enlace + "\n";
+                resul += enlace + "\n";
         }
 
         for (Element link : links) {
@@ -43,9 +39,9 @@ public class Enlaces extends Filtro{
             //resul += link.attr("abs:href" + "\n");
             String enlace = link.attr("abs:href");
             if(!enlace.equals(""))
-            resul += enlace + "\n";
+                resul += enlace + "\n";
         }
 
         return resul;
     }
-}*/
+}

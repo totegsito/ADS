@@ -9,7 +9,7 @@ public class Filtros {
     static {
         filtros.put("Existe", 1);
         filtros.put("Numero de Ocurrencias", 1);
-        filtros.put("Enlaces", 1);
+        filtros.put("Enlaces", 0);
         filtros.put("Etiqueta", 1);
         filtros.put("Posicion", 2);
     }

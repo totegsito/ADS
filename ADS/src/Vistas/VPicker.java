@@ -20,11 +20,13 @@ class VPicker {
     }
 
     public JPanel build(){
-        JPanel result = new JPanel(new GridLayout(1,1+texto.size()));
+        JPanel result = new JPanel(new GridLayout(1,2));
         result.add(jCheckBox);
+        JPanel aux = new JPanel(new FlowLayout());
         for (JTextField jtextfield : texto) {
-            result.add(jtextfield);
+            aux.add(jtextfield);
         }
+        result.add(aux);
         return result;
     }
 

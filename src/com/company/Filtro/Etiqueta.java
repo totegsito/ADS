@@ -1,12 +1,15 @@
+/*
 package com.company.Filtro;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+*/
 /**
  * Created by Frank on 14/03/2016.
- */
+ *//*
+
 public class Etiqueta extends Filtro {
 
     public Etiqueta(String parametro) {
@@ -20,3 +23,4 @@ public class Etiqueta extends Filtro {
         return elemento.html();
     }
 }
+*/

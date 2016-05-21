@@ -1,31 +1,23 @@
-/*
-package com.company.Filtro;
+package Modelo.MFiltros;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-*/
-/**
- * Created by Frank on 09/03/2016.
- *//*
+public class Cabeceras extends MFiltro {
 
-public class Cabeceras extends Filtro {
-
-
-    public Cabeceras(String parametro) {
-        super(parametro);
-    }
+    public Cabeceras(String contenido, String palabra) { super(contenido, palabra);}
 
     @Override
-    public String buscar(String contenido) {
+    public String buscar() {
+
         Document document = Jsoup.parse(contenido);
         Elements metas = document.select("meta");
         String resul = "";
         for (Element meta : metas){
             //System.out.println(meta);
-            if(meta.toString().contains(getParametro().toString())){
+            if(meta.toString().contains(palabra)){
                 resul += meta.toString() + "\n";
             }
         }
@@ -33,4 +25,3 @@ public class Cabeceras extends Filtro {
         return resul;
     }
 }
-*/

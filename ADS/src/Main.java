@@ -9,7 +9,6 @@ class Main {
         NumeroOcurrencias ocurrencias = new NumeroOcurrencias(content, "hello");
         System.out.println(ocurrencias.buscar());*/
 
-        Application app = Application.getInstance();
-        app.run();
+        Application.getInstance().run();
     }
 }

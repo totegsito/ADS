@@ -1,12 +1,7 @@
 import Controlador.CBusqueda;
 import Modelo.MBusqueda;
-import Vistas.Filtros;
 import Vistas.VBusqueda;
-
-/**
- * Created by Frank on 27/04/2016.
- */
-public class Application {
+class Application {
 
     private VBusqueda vista;
     private MBusqueda modelo;

@@ -13,6 +13,14 @@ public abstract class MFiltro {
         this.palabra = palabra;
     }
 
+    public MFiltro(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public void setPalabra(String palabra) {
+        this.palabra = palabra;
+    }
+
     public String getPalabra(){
         return palabra;
     }

@@ -1,8 +1,6 @@
 package Modelo.MFiltros;
 
-/**
- * Created by Frank on 04/04/2016.
- */
+
 public abstract class MFiltro {
     protected String contenido;
     protected String palabra;
@@ -23,6 +21,10 @@ public abstract class MFiltro {
 
     public String getPalabra(){
         return palabra;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
     public String getContenido(){

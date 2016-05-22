@@ -10,6 +10,6 @@ public class Ocurrencia extends MFiltro {
     }
 
     public String buscar(){
-        return contenido.contains(palabra) ? "Existe" : "No existe";
+        return "La busqueda de " + palabra + " ha dado resultado " + (contenido.contains(palabra) ? "positivo" : "negativo") + "\r";
     }
 }

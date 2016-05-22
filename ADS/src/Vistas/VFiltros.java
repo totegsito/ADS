@@ -1,18 +1,17 @@
 package Vistas;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class VFiltros {
-
-
-    public static final Map<String, Integer> filtros = new HashMap<String, Integer>();
+    public static final Map<String, Integer> filtros = new LinkedHashMap<>();
     static {
+        filtros.put("Enlaces", 0);
+        filtros.put("Perfil de formularios", 0);
         filtros.put("Existe", 1);
         filtros.put("Numero de Ocurrencias", 1);
-        filtros.put("Enlaces", 0);
         filtros.put("Etiqueta", 1);
-        filtros.put("Posicion", 2);
-        //filtros.put("Prueba", 10);
+        filtros.put("Cabeceras", 1);
     }
 }

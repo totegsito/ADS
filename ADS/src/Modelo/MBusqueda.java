@@ -1,33 +1,47 @@
 package Modelo;
 
 import Modelo.MDocumento.Documento;
-import Modelo.MFiltros.MFiltro;
+import Modelo.MFiltros.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 public class MBusqueda{
     private Documento doc;
-    private Map<String, MFiltro> MFiltros;
+    private List<MFiltro> MFiltros = new ArrayList<>();
+    private boolean[] activos;
+
 
     public MBusqueda(){
-        this.MFiltros = new HashMap<>();
+        this.MFiltros = new ArrayList<>();
+        MFiltros.add(new Enlaces("", ""));
+        MFiltros.add(new PerfilFormulario("", ""));
+        MFiltros.add(new Ocurrencia("", ""));
+        MFiltros.add(new NumeroOcurrencias("", ""));
+        MFiltros.add(new Etiqueta("", ""));
+        MFiltros.add(new Cabeceras("", ""));
+        activos = new boolean[MFiltros.size()];
     }
 
-    public void addFiltro(String key, MFiltro value){
-        this.MFiltros.put(key, value);
+    public void setState(int pos){
+        activos[pos] = !activos[pos];
     }
 
-    public Map<String, MFiltro> getMFiltros(){
+    public List<MFiltro> getMFiltros(){
         return this.MFiltros;
     }
 
-    public void startFinding(){
+    public String startFinding(String content){
         String resul = "";
-        for(Map.Entry<String, MFiltro> filtro : MFiltros.entrySet()){
-            resul += filtro.getValue().buscar();
+        for(int i = 0; i<MFiltros.size(); i++){
+            MFiltros.get(i).setContenido(content);
+            if(activos[i])
+                resul += MFiltros.get(i).buscar();
         }
+        return resul;
     }
 
 

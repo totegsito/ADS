@@ -5,9 +5,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-/**
- * Created by lorena on 18/05/2016.
- */
 public class Enlaces extends MFiltro {
 
     public Enlaces (String contenido, String palabra) { super(contenido, palabra); }
@@ -42,6 +39,6 @@ public class Enlaces extends MFiltro {
                 resul += enlace + "\n";
         }
 
-        return resul;
+        return "\n\nEnlaces contenidos en la página\n\n" + resul + "\n\n";
     }
 }

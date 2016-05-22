@@ -57,7 +57,7 @@ public class VPicker {
             text.setEditable(false);
             text.addKeyListener(new KeyAdapter() {
                 public void keyTyped(KeyEvent e) {
-                    if (text.getText().length() >= (20/params) ) // limit textfield to 3 characters
+                    if (text.getText().length() >= (20/params) )
                         e.consume();
                 }
             });

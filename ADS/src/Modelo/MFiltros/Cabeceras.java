@@ -12,6 +12,7 @@ public class Cabeceras extends MFiltro {
     @Override
     public String buscar() {
 
+        String cab = "Busqueda en las metas de la palabra " + palabra + "\n";
         Document document = Jsoup.parse(contenido);
         Elements metas = document.select("meta");
         String resul = "";
@@ -22,6 +23,6 @@ public class Cabeceras extends MFiltro {
             }
         }
 
-        return resul;
+        return resul.equals("") ? "No se han encontrado coincidencias" : cab + resul;
     }
 }

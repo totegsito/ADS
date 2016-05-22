@@ -7,9 +7,9 @@ public class PosicionFilaColumna extends MFiltro {
 
     private String columna;
 
-    public PosicionFilaColumna(String contenido, String fila, String columna) {
-        super(contenido, fila);
-        this.columna = columna;
+    public PosicionFilaColumna(String contenido, String palabra) {
+        super(contenido, palabra.split(";")[0]);
+        this.columna = palabra.split(";")[1];
     }
 
     @Override

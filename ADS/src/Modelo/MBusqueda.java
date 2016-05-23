@@ -4,9 +4,7 @@ import Modelo.MDocumento.Documento;
 import Modelo.MFiltros.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class MBusqueda{
@@ -23,6 +21,7 @@ public class MBusqueda{
         MFiltros.add(new NumeroOcurrencias("", ""));
         MFiltros.add(new Etiqueta("", ""));
         MFiltros.add(new Cabeceras("", ""));
+        MFiltros.add(new ValorCentral("", ""));
         activos = new boolean[MFiltros.size()];
     }
 

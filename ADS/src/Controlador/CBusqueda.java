@@ -9,6 +9,7 @@ import Vistas.VBusqueda;
 import Vistas.VPicker;
 import Vistas.VResults;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.WindowAdapter;
@@ -16,6 +17,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 public class CBusqueda {
@@ -64,42 +66,71 @@ public class CBusqueda {
         if (!url.equals("")) {
             Documento documento;
             boolean isURL = url.matches("(?:(?:https?|ftp)://)(?:\\S+(?::\\S*)?@)?(?:(?!10(?:\\.\\d{1,3}){3})(?!127(?:\\.\\d{1,3}){3})(?!169\\.254(?:\\.\\d{1,3}){2})(?!192\\.168(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\x{00a1}-\\x{ffff}0-9]+-?)*[a-z\\x{00a1}-\\x{ffff}0-9]+)(?:\\.(?:[a-z\\x{00a1}-\\x{ffff}0-9]+-?)*[a-z\\x{00a1}-\\x{ffff}0-9]+)*(?:\\.(?:[a-z\\x{00a1}-\\x{ffff}]{2,})))(?::\\d{2,5})?(?:/[^\\s]*)?");
+            boolean isFileSystem = url.matches("^(?:[\\w]\\:|\\\\)(\\\\[a-z_\\-\\s0-9\\.]+)+\\.(txt|html|xhtml|xml|json|md|php)");
+            boolean isValidURL = false;
             if (isURL) {
                 documento = new DocumentoHTML(url);
-            } else
+                if(getConnectionStatus()){
+                    isValidURL = true;
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se puede acceder al recurso", "Fallo de conexion", JOptionPane.ERROR_MESSAGE);
+                }
+            } else if(isFileSystem)
                 documento = new DocumentoTexto(url);
-            documento.parse();
-            if (!vista.getCaseSensitiveCB().isSelected()) {
-                documento.lowerCase();
+            else{
+                documento = null;
+                JOptionPane.showMessageDialog(null, "La ruta no es valida", "Ruta incorrecta", JOptionPane.ERROR_MESSAGE);
             }
-            List<MFiltro> filtros = modelo.getMFiltros();
-            List<VPicker> pickers = vista.getvPickerList();
-            for (int i = 0; i < filtros.size(); i++) {
-                String nuevo = "";
-                for (JTextField textField : pickers.get(i).getTexto()) {
-                    nuevo += textField.getText();
-                }
-                filtros.get(i).setPalabra(nuevo);
+            if(isValidURL||isFileSystem){
+                find(documento);
             }
-
-            String result = modelo.startFinding(documento.getContenido());
-            System.out.println(result);
-
-            VResults results = new VResults(result);
-            results.getSalvar().addActionListener(e->saveResults(results, result));
-            results.addWindowFocusListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    results.dispose();
-                }
-            });
-            results.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+            }else{
+            JOptionPane.showMessageDialog(null, "La ruta no puede estar vacía", "Dirección vacia", JOptionPane.ERROR_MESSAGE );
         }
     }
 
 
+    private void find( Documento documento){
+        documento.parse();
+        if (!vista.getCaseSensitiveCB().isSelected()) {
+            documento.lowerCase();
+        }
+
+        List<MFiltro> filtros = modelo.getMFiltros();
+        List<VPicker> pickers = vista.getvPickerList();
+        for (int i = 0; i < filtros.size(); i++) {
+            String nuevo = "";
+            boolean cent = false;
+            for (JTextField textField : pickers.get(i).getTexto()) {
+                if(textField.isEditable()){
+                    cent = !cent;
+                    nuevo += textField.getText() + ";";
+                }
+            }
+            if(cent)
+                nuevo = nuevo.substring(0, nuevo.lastIndexOf(';')-1);
+            filtros.get(i).setPalabra(nuevo);
+        }
+
+        String result = modelo.startFinding(documento.getContenido());
+
+        VResults results = new VResults(result);
+        results.getSalvar().addActionListener(e->saveResults(results, result));
+        results.addWindowFocusListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                results.dispose();
+            }
+        });
+        results.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        results.pack();
+        results.setResizable(false);
+        results.setVisible(true);
+    }
+
     private void saveResults(VResults results, String result){
         JFileChooser fc=new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TXT", "txt");
         fc.setFileFilter(filtro);
         int seleccion = fc.showSaveDialog(results.getP1() );
@@ -114,6 +145,21 @@ public class CBusqueda {
                 e1.printStackTrace();
             }
         }
+        results.dispose();
+    }
+
+
+    private boolean getConnectionStatus () {
+        boolean conStatus;
+        try {
+            URL u = new URL(vista.getURL());
+            HttpsURLConnection huc = (HttpsURLConnection) u.openConnection();
+            huc.connect();
+            conStatus = true;
+        } catch (Exception e) {
+            conStatus = false;
+        }
+        return conStatus;
     }
 
 

@@ -13,5 +13,6 @@ public class VFiltros {
         filtros.put("Numero de Ocurrencias", 1);
         filtros.put("Etiqueta", 1);
         filtros.put("Cabeceras", 1);
+        filtros.put("Valor entre dos palabras", 2);
     }
 }

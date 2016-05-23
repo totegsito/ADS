@@ -10,14 +10,11 @@ public class VResults extends JFrame{
     private JScrollPane scrollPane;
     private JTextArea textArea;
 
+
     private JButton salvar;
 
     public JPanel getP1() {
         return p1;
-    }
-
-    public JTextArea getTextArea() {
-        return textArea;
     }
 
     public JButton getSalvar() {
@@ -26,6 +23,8 @@ public class VResults extends JFrame{
 
     public VResults(String result){
         super("Resultados busqueda");
+
+
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(800, 600));
 
@@ -39,8 +38,6 @@ public class VResults extends JFrame{
         textArea.setText(result);
         add(p1, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
-        pack();
-        setResizable(false);
-        setVisible(true);
+
     }
 }

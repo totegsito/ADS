@@ -11,7 +11,7 @@ public class VBusqueda  extends JFrame {
     private JTextField vRuta;
     private JPanel p1, p2, p3, p4;
     private List<VPicker> vPickerList;
-    private JCheckBox caseSensitiveCB, htmlCB;
+    private JCheckBox caseSensitiveCB;
 
     private Map<String, Integer> init = VFiltros.filtros;
 
@@ -25,15 +25,12 @@ public class VBusqueda  extends JFrame {
         return caseSensitiveCB;
     }
 
-    public JCheckBox getHtmlCB() {
-        return htmlCB;
-    }
-
     public List<VPicker> getvPickerList() {
         return vPickerList;
     }
 
     public VBusqueda(){
+        super("Document Scrapper");
         vPickerList = new ArrayList<>();
         vRuta = new JTextField();
         buscar = new JButton("Buscar");
@@ -47,10 +44,8 @@ public class VBusqueda  extends JFrame {
 
         p3 = new JPanel(new GridLayout(1,2));
         p3.setBorder(border);
-        caseSensitiveCB = new JCheckBox("Case Sensitive");
-        htmlCB = new JCheckBox("Buscar en html");
+        caseSensitiveCB = new JCheckBox("No distinguir mayusculas");
         p3.add(caseSensitiveCB);
-        p3.add(htmlCB);
         add(p3, BorderLayout.CENTER);
 
         p2 = new JPanel(new GridLayout(init.size(),1) );
@@ -64,8 +59,6 @@ public class VBusqueda  extends JFrame {
         add(p2, BorderLayout.SOUTH);
 
     }
-
-
 
     public String getURL(){
         return this.vRuta.getText();

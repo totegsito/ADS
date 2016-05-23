@@ -17,7 +17,6 @@ public class Enlaces extends MFiltro {
         Elements imports = doc.select("link[href]");
 
         String resul ="";
-
         for (Element src : media) {
 
             resul += src.attr("src") + "\n";
@@ -25,20 +24,17 @@ public class Enlaces extends MFiltro {
 
         for (Element link : imports) {
 
-            //resul += link.attr("abs:href" + "\n");
             String enlace = link.attr("abs:href");
             if(!enlace.equals(""))
                 resul += enlace + "\n";
         }
 
         for (Element link : links) {
-
-            //resul += link.attr("abs:href" + "\n");
             String enlace = link.attr("abs:href");
             if(!enlace.equals(""))
-                resul += enlace + "\n";
+                resul += enlace + "\r";
         }
 
-        return "\n\nEnlaces contenidos en la página\n\n" + resul + "\n\n";
+        return "\n\nEnlaces contenidos en la página\r" + resul + "\r\r";
     }
 }

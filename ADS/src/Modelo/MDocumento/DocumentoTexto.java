@@ -17,7 +17,6 @@ public class DocumentoTexto extends Documento{
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
-
         try{
             archivo = new File(ruta);
             fr = new FileReader(archivo);

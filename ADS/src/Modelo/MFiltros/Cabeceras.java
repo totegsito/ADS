@@ -17,12 +17,11 @@ public class Cabeceras extends MFiltro {
         Elements metas = document.select("meta");
         String resul = "";
         for (Element meta : metas){
-            //System.out.println(meta);
             if(meta.toString().contains(palabra)){
                 resul += meta.toString() + "\n";
             }
         }
 
-        return resul.equals("") ? "No se han encontrado coincidencias" : cab + resul;
+        return resul.equals("") ? "No se han encontrado coincidencias" : cab + resul +"\n";
     }
 }

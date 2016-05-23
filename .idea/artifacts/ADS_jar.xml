@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ADS:jar">
+    <output-path>$PROJECT_DIR$/ADS/out/artifacts/ADS_jar</output-path>
+    <root id="archive" name="ADS.jar">
+      <element id="module-output" name="ADS" />
+      <element id="library" level="project" name="jsoup-1.8.3" />
+    </root>
+  </artifact>
+</component>

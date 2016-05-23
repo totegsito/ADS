@@ -13,6 +13,6 @@ public class Etiqueta extends MFiltro {
     public String buscar() {
         Document documento = Jsoup.parse(contenido);
         Element elemento = documento.select(palabra).first();
-        return "Este es el contenido de la primera etiqueta " + palabra + elemento.html();
+        return "Este es el contenido de la primera etiqueta " + palabra + elemento.html()+"\r";
     }
 }

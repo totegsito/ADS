@@ -14,6 +14,6 @@ public class NumeroOcurrencias extends MFiltro {
             cont++;
             aux = aux.replaceFirst(palabra, "");
         }
-        return "La busqueda de " + palabra + " ha dado " + String.valueOf(cont) + " resultados\r";
+        return "La busqueda de " + palabra + " ha dado " + String.valueOf(cont) + " resultados\n";
     }
 }

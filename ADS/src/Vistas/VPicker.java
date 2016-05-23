@@ -1,8 +1,6 @@
 package Vistas;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -18,14 +16,6 @@ public class VPicker {
         return jCheckBox;
     }
 
-    public void setjCheckBox(JCheckBox jCheckBox) {
-        this.jCheckBox = jCheckBox;
-    }
-
-    public void setTexto(List<JTextField> texto) {
-        this.texto = texto;
-    }
-
     public List<JTextField> getTexto() {
         return texto;
     }
@@ -33,22 +23,7 @@ public class VPicker {
     public VPicker(String name, int params){
         texto = new ArrayList<>(params);
         this.jCheckBox = new JCheckBox(name);
-        /*this.jCheckBox.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                if(jCheckBox.isSelected()){
-                    for (JTextField text:
-                            texto) {
-                        text.setEditable(true);
 
-                    }
-                }else{
-                    for(JTextField text: texto){
-                        text.setEditable(false);
-                    }
-                }
-            }
-        });*/
         for(int i = 0; i<params;i++){
             texto.add(new JTextField());
         }

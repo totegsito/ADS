@@ -8,7 +8,6 @@ import java.util.List;
 
 
 public class MBusqueda{
-    private Documento doc;
     private List<MFiltro> MFiltros = new ArrayList<>();
     private boolean[] activos;
 
@@ -42,7 +41,4 @@ public class MBusqueda{
         }
         return resul;
     }
-
-
-
 }

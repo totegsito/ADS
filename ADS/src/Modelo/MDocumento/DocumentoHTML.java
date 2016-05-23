@@ -22,8 +22,4 @@ public class DocumentoHTML extends Documento {
         }
     }
 
-    public String getText(){
-        return documento.text();
-    }
-
 }
